@@ -1,0 +1,39 @@
+<div class="flex-container">
+  <div class="flex-header">
+    <h2 cds-text="heading" title="{{pageTitle}}" class="page-header header-display">{{pageTitle}}</h2>
+  </div>
+  <div class="flex-search" [formGroup]="searchForm">
+    <input clrInput type="text" placeholder="Search User Name" formControlName="keyword" class="search-input" />
+    <button class="btn btn-sm btn-outline" (click)="searchReset()">Reset</button>
+  </div>
+  <div class="flex-action-items">
+    <button (click)="resetBalance()" class="btn btn-primary btn-sm">Reset Balance</button>
+  </div>
+</div>
+
+<div>
+  <clr-spinner [clrMedium]="true" *ngIf="loadingUsers">Loading users</clr-spinner>
+  <div>
+    <clr-datagrid>
+      <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+      <clr-dg-column [clrDgField]="'age'">Age</clr-dg-column>
+      <clr-dg-column [clrDgField]="'registered'">Registered Date</clr-dg-column>
+      <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+      <clr-dg-column [clrDgField]="'balance'">Balance</clr-dg-column>
+      <clr-dg-column [clrDgField]="'isActive'">Active</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let user of usersList">
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.age}}</clr-dg-cell>
+        <clr-dg-cell>{{user.registered | date:'d-M-yyyy HH:mm:ss'}}</clr-dg-cell>
+        <clr-dg-cell>{{user.email}}</clr-dg-cell>
+        <clr-dg-cell>{{user.balance  | currency:'GBP':'':'1.2-2'}}</clr-dg-cell>
+        <clr-dg-cell>{{ user.isActive ? 'Yes' : 'No'}}</clr-dg-cell>
+      </clr-dg-row>
+      <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="5">
+          <clr-dg-page-size [clrPageSizeOptions]="[5,10,20,50,100]">Users per page</clr-dg-page-size>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+        </clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
