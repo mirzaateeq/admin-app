@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 5500",
     "build": "ng build",
     "start:prod": "ng serve --configuration=production --host localhost --port 5500",
     "build:prod": "ng build --configuration=production",
@@ -20,12 +20,16 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@cds/core": "^5.0.0",
     "@clr/angular": "12.0.7",
+    "@clr/ui": "12.0.7",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^13.0.2",
+    "@ngrx/store": "^13.0.2",
+    "@ngrx/store-devtools": "^13.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@clr/ui": "12.0.7",
-    "@cds/core": "^5.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.12",
